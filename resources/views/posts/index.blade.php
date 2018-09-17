@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="col-md-8 blog-main">
     @foreach ($posts as $post)
         @include('posts.article')
     @endforeach
@@ -11,7 +10,5 @@
     <a class="btn btn-outline-primary" href="#">Older</a>
     <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
     </nav>
-
-</div><!-- /.blog-main -->
 
 @endsection
