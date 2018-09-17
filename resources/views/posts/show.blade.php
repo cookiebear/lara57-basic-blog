@@ -18,6 +18,20 @@
         @endforeach
     </ul>
 </div>
-
+<hr>
+<div class="card">
+    <div class="card-body">
+        <form method="POST" action="/posts/{{ $post->id }}/comments">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <textarea name="body" placeholder="댓글입력" cols="30" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">등록</button>
+            </div>
+        </form>
+        @include('layouts.errors')
+    </div>
+</div>
     
 @endsection
