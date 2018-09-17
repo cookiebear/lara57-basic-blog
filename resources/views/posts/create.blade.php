@@ -17,7 +17,7 @@
             <button type="submit" class="btn btn-primary">등록</button>
         </div>
         
-        @include('layouts.errors')
+        @include('posts.errors')
 
         
         
