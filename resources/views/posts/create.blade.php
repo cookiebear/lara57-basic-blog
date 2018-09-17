@@ -13,8 +13,17 @@
             <label for="body">내용</label>
             <textarea class="form-control" name="body" id="body" cols="30" placeholder="내용"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">등록</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">등록</button>
+        </div>
+        
+        @include('layouts.errors')
+
+        
+        
     </form>
+
+    
     
 </div>
 @endsection

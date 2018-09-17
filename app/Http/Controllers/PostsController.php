@@ -30,12 +30,16 @@ class PostsController extends Controller
 
         // dd(request()->all());
 
+        // 서버사이드 validation
+        $this->validate(request(), [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
         $post = new Post;
 
         // 1. 데이터 저장 기본 방법
         // $post->title = request('title');
         // $post->body = request('body');
-
         // $post->save();
 
         // 2. 데이터 자장 방법
@@ -46,6 +50,7 @@ class PostsController extends Controller
 
         // 3. 데이터 저장 방법
         // Post::create(request()->all());
+        // Post::create(request(['title','body']));
 
         return redirect('/');
 
