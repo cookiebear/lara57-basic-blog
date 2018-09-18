@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
 
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
     public function index() {
         // $posts = Post::all();
         // $posts = Post::orderBy('created_at', 'desc')->get();
@@ -39,18 +42,21 @@ class PostsController extends Controller
             'title' => 'required',
             'body' => 'required'
         ]);
-        $post = new Post;
 
+        auth()->user()->publish(
+            new Post(request(['title','body']))
+        );
         // 1. 데이터 저장 기본 방법
         // $post->title = request('title');
         // $post->body = request('body');
         // $post->save();
 
         // 2. 데이터 자장 방법
-        Post::create([
-            'title' => request('title'),
-            'body' => request('body')
-        ]);
+        // Post::create([
+        //     'title' => request('title'),
+        //     'body' => request('body'),
+        //     'user_id' => auth()->id()
+        // ]);
 
         // 3. 데이터 저장 방법
         // Post::create(request()->all());
